@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 const SocialServicesPopUp = (props) => {
     return (props.trigger) ? (
         <PopupBackground>
-            <PopupContainer style = {{ width: "35%" }} >
+            <PopupContainer style = {{ width: "45%" }} >
                 <Link to = "/feiras_livres" style={{ textDecoration: "none", color: "#1b262c" }}>
                     <MiniCard
 						source="/assets/img/home_feiras_livres.png"
@@ -18,6 +18,12 @@ const SocialServicesPopUp = (props) => {
                     <MiniCard
 						source="/assets/img/home_cadastro_diaristas.png"
 						titulo="Cadastro de Diaristas"
+                    />
+                </Link>
+                <Link to = "/donation-options" style={{ textDecoration: "none", color: "#1b262c" }}>
+                    <MiniCard
+						source="/assets/img/home_descarte_solidario.png"
+						titulo="Doações"
                     />
                 </Link>
                 <Button onClick = {() => props.setTrigger(false)} 

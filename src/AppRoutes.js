@@ -129,9 +129,9 @@ import DiaristasOpcoes from "./pages/social-services/diarist-janitors/option";
 import DiaristasNovo from "./pages/social-services/diarist-janitors/index1";
 import DiaristasLista from "./pages/social-services/diarist-janitors/index2";
 import NovaDoacao from "./pages/social-services/donation/donate/index";
-import NovoVoluntario from "./pages/social-services/donation/donate/index";
-import DoacoesLista from "./pages/social-services/donation/donate/index";
-import DoacoesOpcoes from "./pages/social-services/donation/needy-families-option";
+import NovoVoluntario from "./pages/social-services/donation/new-voluntary/index";
+import DoacoesLista from "./pages/social-services/donation/view-donations/index";
+import DoacoesOpcoes from "./pages/social-services/donation/donations-option";
 
 
 
@@ -318,7 +318,7 @@ const AppRoutes = () => {
 							path="/admin/associacao_comercial"
 							element={<AssociacaoComercialOpcoes />}
 						/>
-						<Route
+				  		<Route
 							exact
 							path="/admin/comunicacao"
 							element={<ComunicacaoOpcoes />}

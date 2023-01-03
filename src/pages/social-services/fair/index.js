@@ -139,6 +139,11 @@ const Feiras = (props) => {
 								name: "Cadastro de Diaristas",
 								link: "/diaristas_opcoes",
 							},
+							{
+								id: 3,
+								name: "Doacoes",
+								link: "/donation-options",
+							},
 						]}
 					/>
 					<div style={{ marginTop: "14px" }}>

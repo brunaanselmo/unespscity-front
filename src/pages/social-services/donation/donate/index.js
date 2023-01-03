@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { api } from "../../../../services/api";
-import PagesPieChart from "../../../../charts/types/donut";
+import { Link } from "react-router-dom";
+import { FormContainer, InputAddressContainer } from "../styles";
 import Header from "../../../../components/header";
 import MiniCard from "../../../../components/mini-card";
+import Input from "../../../../components/input";
+import InputLocalization from "../../../../components/input-localization-button";
+import DescriptionInput from "../../../../components/description-input";
+import Button from "../../../../components/styled-components/form-button";
 import GrayLine from "../../../../components/styled-components/gray-line";
-import { ChartContainer } from "../../../../charts/types/donut/chart";
 import Footer from "../../../../components/footer";
+import Favorites from "../../../../components/favorites";
 import Typography from "@mui/material/Typography";
 import {
 	ContainerBase,
@@ -17,48 +21,29 @@ import {
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { StyledHr } from "../../../../components/styled-components/StyledHr";
-import Favorites from "../../../../components/favorites";
-import SolidaryDisposal from "../../../../components/forms/ServiceOrderInformation/solidaryDisposal";
+import ServiceOrderInformation from "../../../../components/forms/ServiceOrderInformation";
 
 const NovaDoacao = (props) => {
-	const [totalNaoResolvidos, setTotalNaoResolvidos] = useState(0);
-	const [totalResolvidos, setTotalResolvidos] = useState(0);
-
-	useEffect(() => {
-		async function getProblems() {
-			try {
-				const { data } = await api.get('/solidarydisposal');
-				let totalSolicitados = data.length;
-				setTotalResolvidos(data.filter((service) => service.isResolved === true).length);
-				setTotalNaoResolvidos(totalSolicitados - totalResolvidos);
-			}
-			catch (e) {
-				console.log(e);
-			}
-		}
-		getProblems();
-	}, []);	
-
 	const [isFavorite, setIsFavorite] = useState(false);
 	useEffect(() => {
 		props.data.find(
-			(favoriteX) => favoriteX.id === 35 && setIsFavorite(true)
+			(favoriteX) => favoriteX.id === 39 && setIsFavorite(true)
 		);
 	}, []);
 	const handleFavorite = () => {
 		if (!isFavorite) {
 			props.handleAddFavorite({
-				id: 35,
-				name: "Descarte Solidário",
-				img: "/assets/img/home_familias_carentes.png",
-				link: "/descarte_solidario",
+				id: 39,
+				name: "Cadastro de Diaristas",
+				img: "/assets/img/home_servicos_sociais.png",
+				link: "/diaristas_novo",
 			}); //se favoritou o servico
 		} else {
 			props.handleSubFavorite({
-				id: 35,
-				name: "Descarte Solidário",
-				img: "/assets/img/home_familias_carentes.png",
-				link: "/descarte_solidario",
+				id: 39,
+				name: "Cadastro de Diaristas",
+				img: "/assets/img/home_servicos_sociais.png",
+				link: "/diaristas_novo",
 			}); //se desfavoritou o servico
 		}
 		setIsFavorite(!isFavorite);
@@ -71,38 +56,44 @@ const NovaDoacao = (props) => {
 			<ContentContainer>
 				<TopContentContainer>
 					<MiniCard
-						source="/assets/img/home_familias_carentes.png"
-						titulo="Famílias Carentes"
+						source="/assets/img/home_servicos_sociais.png"
+						titulo="Serviços Sociais"
 						linkItems={[
 							{
 								id: 1,
-								name: "Registro de Familias Carentes",
-								link: "/familia_carente_opcoes",
+								name: "Feiras Livres",
+								link: "/feiras_livres",
 							},
 							{
 								id: 2,
-								name: "Moradores de Rua",
-								link: "/moradores_rua",
+								name: "Cadastro de Diaristas",
+								link: "/diaristas_opcoes",
 							},
 							{
 								id: 3,
-								name: "Descarte Solidário",
-								link: "/descarte_solidario",
+								name: "Doacoes",
+								link: "/donation-options",
 							},
 						]}
 					/>
 					<div style={{ marginTop: "14px" }}>
 						<div style={{ textAlign: "center" }}>
 							<Typography variant="h4">
-								Descarte Solidário
+								Cadastro de Diaristas
 							</Typography>
 						</div>
 						<DescriptionText>
-							Utilize este serviço para realizar o descarte
-							solidário de roupas/calçados, eletrodométicos,
-							móveis ou similares. O órgão adequado será informado
-							automaticamente para fazer o recolhimento no tempo
-							hábil mais rápido possível.
+							Utilize este serviço para cadastrar um(a) novo(a)
+							diarista, faxineiro(a) ou zelador(a) na sua cidade.
+							Para ver a lista com todos os cadastros, clique
+							<Link
+								to="/diaristas_lista"
+								style={{ textDecoration: "none" }}
+							>
+								{" "}
+								AQUI
+							</Link>
+							.
 						</DescriptionText>
 					</div>
 					{isFavorite ? (
@@ -134,20 +125,14 @@ const NovaDoacao = (props) => {
 					<StyledHr />
 				</TopContentContainer>
 				<MidContentContainer>
-					<SolidaryDisposal
-						srcaddress="/solidarydisposal"
-						descriptionHelperText="Por favor, informe-nos acima a natureza dos itens a serem descartados. Nos ajudará a acionar o órgão ideal."
+					<ServiceOrderInformation
+						phoneOption={true}
+						srcaddress="/diaristjanitor"
+						descriptionHelperText="Conte-nos em detalhes o seu serviço prestado, horários disponíveis, cálculo de pagamento e o que mais julgar importante."
 					/>
 				</MidContentContainer>
 			</ContentContainer>
 			<GrayLine />
-			<ChartContainer>
-				<h3> Descartes informados e descartes recolhidos: </h3>
-				<PagesPieChart
-					solved={totalResolvidos}
-					unsolved={totalNaoResolvidos}
-				/>
-			</ChartContainer>
 			<Footer />
 		</ContainerBase>
 	);

@@ -14,7 +14,10 @@ const ServicosSociaisOpcoes = () => {
                     <Link to = "/admin/diaristas">
                         <Button text = "Diaristas" />
                     </Link>
-                </ContainerColumn>
+                    <Link to = "/admin/donation-options">
+                        <Button text = "Doações" />
+                    </Link>
+                    </ContainerColumn>
             </ContainerBase>
         </>
     );

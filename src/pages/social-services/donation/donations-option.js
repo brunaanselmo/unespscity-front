@@ -1,0 +1,25 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "../../../components/styled-components/form-button";
+import { ContainerBase, ContainerColumn } from "./styles";
+
+const DoacoesOpcoes = () => {
+    return (
+        <>
+            <ContainerBase style = {{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <ContainerColumn>
+                    <Link to = "/new-donation">
+                        <Button text = "Nova Doação" />
+                    </Link>
+                    <Link to = "/donation-list">
+                        <Button text = "Ver lista de doações" />
+                    </Link>
+                    <Link to = "/new-voluntary">
+                        <Button text = "Novo Voluntário" />
+                    </Link>
+                </ContainerColumn>
+            </ContainerBase>
+        </>
+    );
+};
+export default DoacoesOpcoes;
