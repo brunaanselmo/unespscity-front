@@ -13,13 +13,13 @@ import Typography from "@mui/material/Typography";
 import Footer from "../../../../components/footer";
 import AdminListCard from "../../../../components/card-list-admin";
 
-const AdminDiaristas = () => {
+const AdminDoacoes = () => {
 	const [problems, setProblems] = useState([]);
 
 	useEffect(() => {
 		async function getProblems() {
 			try {
-				const { data } = await api.get("/diaristjanitor");
+				const { data } = await api.get("/donation");
 				setProblems(data);
 			} catch (e) {
 				console.log(e);
@@ -50,7 +50,7 @@ const AdminDiaristas = () => {
 							{
 								id: 3,
 								name: "Doacoes",
-								link: "/donation-options",
+								link: "/doacoes_opcoes",
 							},
 						]}
 					/>
@@ -88,4 +88,4 @@ const AdminDiaristas = () => {
 		</ContainerBase>
 	);
 };
-export default AdminDiaristas;
+export default AdminDoacoes;

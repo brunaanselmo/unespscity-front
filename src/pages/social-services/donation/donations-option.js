@@ -8,13 +8,13 @@ const DoacoesOpcoes = () => {
         <>
             <ContainerBase style = {{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <ContainerColumn>
-                    <Link to = "/new-donation">
+                    <Link to = "/nova_doacao">
                         <Button text = "Nova Doação" />
                     </Link>
-                    <Link to = "/donation-list">
+                    <Link to = "/doacao_lista">
                         <Button text = "Ver lista de doações" />
                     </Link>
-                    <Link to = "/new-voluntary">
+                    <Link to = "/novo_voluntario">
                         <Button text = "Novo Voluntário" />
                     </Link>
                 </ContainerColumn>

@@ -128,6 +128,7 @@ import AdminDiaristas from "./pages/administrator/social-services/diarist-janito
 import DiaristasOpcoes from "./pages/social-services/diarist-janitors/option";
 import DiaristasNovo from "./pages/social-services/diarist-janitors/index1";
 import DiaristasLista from "./pages/social-services/diarist-janitors/index2";
+import AdminDoacoes from "./pages/administrator/social-services/donation";
 import NovaDoacao from "./pages/social-services/donation/donate/index";
 import NovoVoluntario from "./pages/social-services/donation/new-voluntary/index";
 import DoacoesLista from "./pages/social-services/donation/view-donations/index";
@@ -581,22 +582,27 @@ const AppRoutes = () => {
 						
 						<Route
 							exact
-							path="/admin/new-donation"
+							path="/nova_doacao"
 							element={<NovaDoacao/>}
 						/>
 						<Route
 							exact
-							path="/admin/new-voluntary"
+							path="/admin/donation"
+							element={<AdminDoacoes/>}
+						/>
+						<Route
+							exact
+							path="/novo_voluntario"
 							element={<NovoVoluntario/>}
 						/>
 						<Route
 							exact
-							path="/admin/donation-list"
+							path="/doacao_lista"
 							element={<DoacoesLista />}
 						/>
 						<Route
 							exact
-							path="/admin/donation-options"
+							path="/doacoes_opcoes"
 							element={<DoacoesOpcoes/>}
 						/>
 						<Route

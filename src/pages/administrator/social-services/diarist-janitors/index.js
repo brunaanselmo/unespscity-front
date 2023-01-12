@@ -50,7 +50,7 @@ const AdminDiaristas = () => {
 							{
 								id: 3,
 								name: "Doacoes",
-								link: "/donation-options",
+								link: "/doacoes_opcoes",
 							},
 						]}
 					/>

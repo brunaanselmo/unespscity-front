@@ -20,7 +20,7 @@ const SocialServicesPopUp = (props) => {
 						titulo="Cadastro de Diaristas"
                     />
                 </Link>
-                <Link to = "/donation-options" style={{ textDecoration: "none", color: "#1b262c" }}>
+                <Link to = "/doacoes_opcoes" style={{ textDecoration: "none", color: "#1b262c" }}>
                     <MiniCard
 						source="/assets/img/home_descarte_solidario.png"
 						titulo="Doações"
