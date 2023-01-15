@@ -11,130 +11,62 @@ import GrayLine from "../../../../components/styled-components/gray-line";
 import Footer from "../../../../components/footer";
 import Favorites from "../../../../components/favorites";
 import Typography from "@mui/material/Typography";
+import SolidaryDisposal from "../../../../components/forms/ServiceOrderInformation/solidaryDisposal";
+import { ChartContainer } from "../../../../charts/types/donut/chart";
 import {
-	ContainerBase,
-	ContentContainer,
-	TopContentContainer,
-	DescriptionText,
-	MidContentContainer,
+  ContainerBase,
+  ContentContainer,
+  TopContentContainer,
+  DescriptionText,
+  MidContentContainer,
 } from "../../../../components/styled-components/PageStyles";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { StyledHr } from "../../../../components/styled-components/StyledHr";
+import Form from "../../../../components/forms/index";
 import ServiceOrderInformation from "../../../../components/forms/ServiceOrderInformation";
+import Registry from "../../../../components/forms/ServiceOrderInformation/registry";
 
 const NovoVoluntario = (props) => {
-	const [isFavorite, setIsFavorite] = useState(false);
-	useEffect(() => {
-		props.data.find(
-			(favoriteX) => favoriteX.id === 39 && setIsFavorite(true)
-		);
-	}, []);
-	const handleFavorite = () => {
-		if (!isFavorite) {
-			props.handleAddFavorite({
-				id: 39,
-				name: "Cadastro de Diaristas",
-				img: "/assets/img/home_servicos_sociais.png",
-				link: "/diaristas_novo",
-			}); //se favoritou o servico
-		} else {
-			props.handleSubFavorite({
-				id: 39,
-				name: "Cadastro de Diaristas",
-				img: "/assets/img/home_servicos_sociais.png",
-				link: "/diaristas_novo",
-			}); //se desfavoritou o servico
-		}
-		setIsFavorite(!isFavorite);
-	};
+  return (
+    <>
+      <ContainerBase>
+        <Header />
+        <ContentContainer>
+          <TopContentContainer>
+            <MiniCard
+              source="/assets/img/home_descarte_solidario.png"
+              titulo="Doações"
+            />
+            <div style={{ marginTop: "14px", textAlign: "center" }}>
+              <div style={{ marginRight: "-20px" }}>
+                <Typography variant="h4">
+                  Cadastro de novo voluntário
+                </Typography>
+              </div>
+              <DescriptionText>
+                Nesta página você pode se cadastrar para ser um voluntário para
+                recolher as doações recebidas.
+              </DescriptionText>
+            </div>
+            <AiOutlineStar
+              style={{
+                cursor: "pointer",
+                margin: ".8rem",
+                stroke: "black",
+                strokeWidth: "5",
+              }}
+              size={25}
+            />
+            <StyledHr />
+            <Registry />
+          </TopContentContainer>
+        </ContentContainer>
 
-	return (
-		<ContainerBase>
-			<Header />
-			<Favorites data={props.data} />
-			<ContentContainer>
-				<TopContentContainer>
-					<MiniCard
-						source="/assets/img/home_servicos_sociais.png"
-						titulo="Serviços Sociais"
-						linkItems={[
-							{
-								id: 1,
-								name: "Feiras Livres",
-								link: "/feiras_livres",
-							},
-							{
-								id: 2,
-								name: "Cadastro de Diaristas",
-								link: "/diaristas_opcoes",
-							},
-							{
-								id: 3,
-								name: "Doacoes",
-								link: "/doacoes_opcoes",
-							},
-						]}
-					/>
-					<div style={{ marginTop: "14px" }}>
-						<div style={{ textAlign: "center" }}>
-							<Typography variant="h4">
-								Cadastro de Diaristas
-							</Typography>
-						</div>
-						<DescriptionText>
-							Utilize este serviço para cadastrar um(a) novo(a)
-							diarista, faxineiro(a) ou zelador(a) na sua cidade.
-							Para ver a lista com todos os cadastros, clique
-							<Link
-								to="/diaristas_lista"
-								style={{ textDecoration: "none" }}
-							>
-								{" "}
-								AQUI
-							</Link>
-							.
-						</DescriptionText>
-					</div>
-					{isFavorite ? (
-						<span>
-							<AiFillStar
-								style={{
-									cursor: "pointer",
-									margin: ".8rem",
-									stroke: "black",
-									strokeWidth: "5",
-								}}
-								color={"yellow"}
-								size={25}
-								onClick={() => handleFavorite()}
-							/>
-						</span>
-					) : (
-						<AiOutlineStar
-							style={{
-								cursor: "pointer",
-								margin: ".8rem",
-								stroke: "black",
-								strokeWidth: "5",
-							}}
-							size={25}
-							onClick={() => handleFavorite()}
-						/>
-					)}
-					<StyledHr />
-				</TopContentContainer>
-				<MidContentContainer>
-					<ServiceOrderInformation
-						phoneOption={true}
-						srcaddress="/diaristjanitor"
-						descriptionHelperText="Conte-nos em detalhes o seu serviço prestado, horários disponíveis, cálculo de pagamento e o que mais julgar importante."
-					/>
-				</MidContentContainer>
-			</ContentContainer>
-			<GrayLine />
-			<Footer />
-		</ContainerBase>
-	);
+        <Footer />
+      </ContainerBase>
+    </>
+  );
 };
+
 export default NovoVoluntario;

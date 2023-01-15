@@ -64,7 +64,6 @@ const NovaDoacao = (props) => {
             />
           </MidContentContainer>
         </ContentContainer>
-
         <Footer />
       </ContainerBase>
     </>

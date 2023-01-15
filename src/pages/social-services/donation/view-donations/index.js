@@ -21,7 +21,6 @@ import Favorites from "../../../../components/favorites";
 import SolidaryDisposal from "../../../../components/forms/ServiceOrderInformation/solidaryDisposal";
 import Form from "../../../../components/forms/index";
 
-
 const DoacoesLista = (props) => {
   return (
     <>
@@ -38,8 +37,8 @@ const DoacoesLista = (props) => {
                 <Typography variant="h4">Doações Recebidas</Typography>
               </div>
               <DescriptionText>
-                Esta página contém todas as doações que foram enviadas e ainda não 
-				foram recolhidas para serem levadas à instituição desejada.
+                Esta página contém todas as doações que foram enviadas e ainda
+                não foram recolhidas para serem levadas à instituição desejada.
               </DescriptionText>
             </div>
             <AiOutlineStar
@@ -52,10 +51,10 @@ const DoacoesLista = (props) => {
               size={25}
             />
             <StyledHr />
-          </TopContentContainer>         
-            <ChartContainer>
-              <h3> Doações informadas: </h3>
-            </ChartContainer>
+          </TopContentContainer>
+          <ChartContainer>
+            <h3> Doações informadas: </h3>
+          </ChartContainer>
         </ContentContainer>
 
         <Footer />
