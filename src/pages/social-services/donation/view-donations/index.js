@@ -22,6 +22,24 @@ import SolidaryDisposal from "../../../../components/forms/ServiceOrderInformati
 import Form from "../../../../components/forms/index";
 
 const DoacoesLista = (props) => {
+  const [totalNaoResolvidos, setTotalNaoResolvidos] = useState(0);
+	const [totalResolvidos, setTotalResolvidos] = useState(0);
+
+	useEffect(() => {
+		async function getProblems() {
+			try {
+				const { data } = await api.get('/donations');
+				let totalSolicitados = data.length;
+				setTotalResolvidos(data.filter((service) => service.isResolved === true).length);
+				setTotalNaoResolvidos(totalSolicitados - totalResolvidos);
+			}
+			catch (e) {
+				console.log(e);
+			}
+		}
+		getProblems();
+	}, []);	
+
   return (
     <>
       <ContainerBase>
@@ -32,7 +50,7 @@ const DoacoesLista = (props) => {
               source="/assets/img/home_descarte_solidario.png"
               titulo="Doações"
             />
-            <div style={{ marginTop: "14px", textAlign: "center" }}>
+            <div style= {{ marginTop: "14px", textAlign: "center" }}>
               <div style={{ marginRight: "-20px" }}>
                 <Typography variant="h4">Doações Recebidas</Typography>
               </div>
@@ -52,8 +70,13 @@ const DoacoesLista = (props) => {
             />
             <StyledHr />
           </TopContentContainer>
-          <ChartContainer>
-            <h3> Doações informadas: </h3>
+          <ChartContainer> 
+            <h3> Doações informadas e recolhidas: </h3>
+            <PagesPieChart
+              solved={totalResolvidos}
+              unsolved= {totalNaoResolvidos}
+            />
+       
           </ChartContainer>
         </ContentContainer>
 

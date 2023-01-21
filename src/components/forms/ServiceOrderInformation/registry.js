@@ -19,8 +19,7 @@ import { Context } from "../../../context/Auth/AuthContext";
 const Registry = (props) => {
   const { user } = useContext(Context);
   const [name, setName] = useState("");
-  const [CPF, setCPF] = useState("");
-  const [date, setDate] = useState("");
+  const [cpf, setcpf] = useState("");
   const { srcaddress, phoneOption } = props;
   const [formValues, setFormValues] = useContext(LocalContext);
   const [approximateLocation, setApproximateLocation] = useState(false);
@@ -111,12 +110,8 @@ const Registry = (props) => {
       alert("É necessário cadastrar um nome");
       return;
     }
-    if (CPF === "") {
+    if (cpf === "") {
       alert("É necessário cadastrar um CPF");
-      return;
-    }
-    if (date === "") {
-      alert("É necessário cadastrar uma data");
       return;
     }
     if (car === "") {
@@ -140,7 +135,8 @@ const Registry = (props) => {
           latitude: -1,
           longitude: -1,
           name: `${name}`,
-          CPF: `${CPF}`,
+          cpf: `${cpf}`,
+          car: `${car}`,
           sign: `${sign}`,
         },
       })
@@ -179,18 +175,10 @@ const Registry = (props) => {
                   id="outlined-basic"
                   label="CPF"
                   variant="outlined"
-                  value={CPF}
-                  onChange={(e) => setCPF(e.target.value)}
+                  value={cpf}
+                  onChange={(e) => setcpf(e.target.value)}
                 />
 
-                <TextField
-                  fullWidth
-                  id="outlined-basic"
-                  label="Data de nascimento"
-                  variant="outlined"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                />
               </Stack>
               <br />
               <Stack spacing={2} direction="row">

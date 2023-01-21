@@ -59,7 +59,7 @@ const NovoVoluntario = (props) => {
               size={25}
             />
             <StyledHr />
-            <Registry />
+            <Registry srcaddress="/newvoluntaries"/>
           </TopContentContainer>
         </ContentContainer>
 

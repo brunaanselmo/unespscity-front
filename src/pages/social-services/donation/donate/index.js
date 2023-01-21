@@ -57,7 +57,7 @@ const NovaDoacao = (props) => {
           </TopContentContainer>
           <MidContentContainer>
             <SolidaryDisposal
-              srcaddress="/solidarydisposal"
+              srcaddress="/donations"
               descriptionHelperText="Por favor, 
 						informe-nos acima a natureza dos itens a serem descartados. 
 						Nos ajudará a acionar o órgão ideal."
