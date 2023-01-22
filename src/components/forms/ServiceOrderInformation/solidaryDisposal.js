@@ -15,6 +15,7 @@ import { fetchLocation } from "../../../services/GoogleMaps";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { Circle } from "@react-google-maps/api";
 import { Context } from "../../../context/Auth/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 const SolidaryDisposal = (props) => {
 	const { user } = useContext(Context);
@@ -166,10 +167,20 @@ const SolidaryDisposal = (props) => {
 				})
 				.then((response) => {
 					console.log(response);
-					alert(`Forms foi enviado`);
+					toast.success("Formulário enviado com sucesso", {
+						position: toast.POSITION.TOP_RIGHT,
+					});
 				})
 				.catch((e) => {
 					console.log(e);
+					if (e.response.status === 404) {
+						toast.error(
+							"Erro 404 ocorreu, servidor não pôde ser encontrado!",
+							{
+								position: toast.POSITION.TOP_RIGHT,
+							}
+						);
+					}
 				});
 		} else {
 			if (houseNumber === 0) {
@@ -206,14 +217,25 @@ const SolidaryDisposal = (props) => {
 				})
 				.then((response) => {
 					console.log(response);
-					alert(`Forms foi enviado`);
+					toast.success("Formulário enviado com sucesso", {
+						position: toast.POSITION.TOP_RIGHT,
+					});
 				})
 				.catch((e) => {
 					console.log(e);
+					if (e.response.status === 404) {
+						toast.error(
+							"Erro 404 ocorreu, servidor não pôde ser encontrado!",
+							{
+								position: toast.POSITION.TOP_RIGHT,
+							}
+						);
+					}
 				});
-		}
+		
+			}
 
-		//console.log("Dados Enviados: ", res.data);
+		
 	};
 
 	return (

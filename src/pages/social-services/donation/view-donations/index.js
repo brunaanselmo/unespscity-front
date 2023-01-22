@@ -20,25 +20,35 @@ import { StyledHr } from "../../../../components/styled-components/StyledHr";
 import Favorites from "../../../../components/favorites";
 import SolidaryDisposal from "../../../../components/forms/ServiceOrderInformation/solidaryDisposal";
 import Form from "../../../../components/forms/index";
+import styles from "./styles.css";
 
 const DoacoesLista = (props) => {
-  const [totalNaoResolvidos, setTotalNaoResolvidos] = useState(0);
-	const [totalResolvidos, setTotalResolvidos] = useState(0);
 
-	useEffect(() => {
+	
 		async function getProblems() {
+      var elemento_pai = document.getElementsByClassName('divdoacoes')[0];
 			try {
 				const { data } = await api.get('/donations');
-				let totalSolicitados = data.length;
-				setTotalResolvidos(data.filter((service) => service.isResolved === true).length);
-				setTotalNaoResolvidos(totalSolicitados - totalResolvidos);
+			  console.log(data);
+        for ( let i = 0; i < data.length; i++){
+          var element = document.createElement('h4');
+          element.style.padding = '20px';
+          element.style.outline = '1px solid black';
+          element.style.borderRadius = '10px';
+          var texto = document.createTextNode('Doação:  ' + (i+1) + ' - Endereço:   ' + (data[i].street) + ' - Descrição:   ' + (data[i].description));     
+          element.appendChild(texto);
+          elemento_pai.appendChild(element);
+          console.log(data[i].street);
+        }
 			}
 			catch (e) {
 				console.log(e);
 			}
 		}
+
 		getProblems();
-	}, []);	
+	
+
 
   return (
     <>
@@ -71,12 +81,12 @@ const DoacoesLista = (props) => {
             <StyledHr />
           </TopContentContainer>
           <ChartContainer> 
-            <h3> Doações informadas e recolhidas: </h3>
-            <PagesPieChart
-              solved={totalResolvidos}
-              unsolved= {totalNaoResolvidos}
-            />
-       
+          <h3> Doações informadas: </h3>
+            <div className="divdoacoes" style = {{ margin: "20px", display: "flex", flexDirection: "column"}}>
+        
+            </div>
+
+             
           </ChartContainer>
         </ContentContainer>
 
