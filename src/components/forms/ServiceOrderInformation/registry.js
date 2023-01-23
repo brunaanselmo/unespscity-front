@@ -32,11 +32,21 @@ const Registry = (props) => {
   const [car, setCar] = useState("");
   const [sign, setSign] = useState("");
 
+
   const containerStyle = {
     width: "100%",
     height: "500px",
   };
+
   
+
+		localStorage.setItem(
+			"locationLocalStorage",
+			JSON.stringify(name, cpf, street, streetNumber, district, referencePoint, car, sign)
+		);
+
+    
+
   const handleSubmit = (event) => {
     //alert("Um nome foi enviado: " + this.state.value);
           event.preventDefault();
@@ -85,6 +95,14 @@ const Registry = (props) => {
             return;
           }
 
+          if (data.city === undefined && data.state === undefined) {
+            setFormValues({
+              ...formValues,
+              state: 'SP',
+              city: 3541406,
+            });
+          }
+ 
             const res = api
               .post(srcaddress, {
                 data: {
@@ -116,7 +134,8 @@ const Registry = (props) => {
                   });
                 }
               });
-            console.log("aquiquiquiqu", data.cpf)
+
+              console.log("aquiiiiii", data.cpf)
   };
 
   
